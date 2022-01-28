@@ -17,6 +17,27 @@ const favicon = require("serve-favicon");
 // https://www.npmjs.com/package/path
 const path = require("path");
 
+// Middleware for sessions
+const session = require('express-session');
+
+//Mongo store package that stores session records in the database
+const MongoStore = require('connect-mongo');
+const app = require("../app");
+
+const MONGO_URI =
+process.env.MONGODB_URI || "mongodb://localhost/lab-express-basic-auth";
+
+app.use(
+ session({
+   secret: process.env.SESSION_SECRET || "ironhack123",
+   resave: true,
+   saveUninitialized: false,
+   store: MongoStore.create({
+     mongoUrl: MONGO_URI,
+   }),
+ })
+);
+
 // Middleware configuration
 module.exports = (app) => {
   // In development environment the app logs

@@ -1,0 +1,9 @@
+{{#if userInSession}}
+     {{ userInSession.username }}
+    <p>Your profile page!</p>
+    <button>
+        <a href="/userProfile">Profile</a>
+    </button>
+{{else}}
+    <p> Join us🚀</p>
+{{/if}}
