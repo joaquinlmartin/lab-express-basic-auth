@@ -7,11 +7,11 @@ const saltRounds = 20;
 const User = require('../models/User.model');
 const { isLoggedIn } = require('../middlewares');
 
-router.get('/sign-up', (req, res) => {
-  res.render('auth/sing-up')
+router.get('/signup', (req, res) => {
+  res.render('auth/signup')
 })
 
-router.post('/sing-up', (req, res, next) => {
+router.post('/signup', (req, res, next) => {
   const { username, password } = req.body;
   if (!username || !password) {
     res.render('signup', {
@@ -30,7 +30,7 @@ router.post('/sing-up', (req, res, next) => {
     })
     .then(userFromDB => {
       console.log(`New user ${userFromDB} is created`);
-      res.redirect('profile')
+      res.redirect('auth/login')
     })
     .catch(error => next(error));
 })
@@ -73,8 +73,8 @@ router.post('/logout', (req, res, next) => {
   });
 });
 
-router.get('/userProfile', isLoggedIn, (req, res) => {
-  res.render('users/user-profile', { userInSession: req.session.currentUser });
+router.get('/profile', isLoggedIn, (req, res) => {
+  res.render('user/profile', { userInSession: req.session.currentUser });
 });
 
 module.exports = router;

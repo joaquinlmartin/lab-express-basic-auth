@@ -1,12 +1,15 @@
 <div>
-    <form action="/login" method="POST">
-        <div>
-            <label><input type="text" name="user" placeholder="Username" /></label>
-        </div>
-        <div>
-            <label> <input type="password" name="password" placeholder="Password" />
-                {{#if errorMessage}}
-                <p class="error">{{errorMessage}}</p>
-                {{/if}}</label>
-        </div>
+  <h1>{{title}}</h1>
+</div>
+<div class="main-bar">
+  <form action='/login' method='POST'>
+    <label class="label-bar" for='username'> Username </label>
+    <input class="input-bar" type='username' name='username' placeholder='Your user name go here!' />
+    <label class="label-bar" for='password'> Password </label>
+    <input class="input-bar" type='password' name='password' placeholder='Your password go here!' />
+    <button class="btn" type='submit'>login</button>
+    {{#if errorMessage}}
+    <p>{{errorMessage}}</p>
+    {{/if}}
+  </form>
 </div>
