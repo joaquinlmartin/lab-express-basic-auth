@@ -1,23 +1,12 @@
 <div>
-  <h1>{{title}}</h1>
-  <h2>Login!</h2>
-
-  <form action='/auth/signup-form' method='POST'>
-
-    <label for='username'> Username </label>
-    <input type='text' name='username' placeholder='Your username!'/>
-    
-    <label for='email'> Email </label>
-    <input type='text' name='email' placeholder='Your email!'/>
-
-    <label for='password'> Password </label>
-    <input type='password' name='password' placeholder='Your password!'/>
-    
-
-    <button type='submit'>Login</button>
-
-  {{#if errorMessage}}
-    <p>{{errorMessage}}</p>
-  {{/if}}
-  </form>
+    <form action="/login" method="POST">
+        <div>
+            <label><input type="text" name="user" placeholder="Username" /></label>
+        </div>
+        <div>
+            <label> <input type="password" name="password" placeholder="Password" />
+                {{#if errorMessage}}
+                <p class="error">{{errorMessage}}</p>
+                {{/if}}</label>
+        </div>
 </div>
